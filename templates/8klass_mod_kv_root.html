@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+
+{% extends 'base.html' %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+
+{% block body %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <!-- <script src="{{ url_for('static', filename='js/ajax_date.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='loader.css') }}">
+
+    <style>
+    @font-face {
+	font-family: Avenir;
+	src: url( "{{ url_for('static', filename='AvenirNextCyr-Regular.ttf') }}" );
+    }
+
+    .font-base{
+    font-family: Avenir !important;
+    }
+
+    </style>
+</head>
+
+<body>
+<div style="text-align: center; margin-top: 100px;">
+    <h1 class="">Модуль. Квадратный корень</h1>
+</div>
+<div class="books_profile border border-2 rounded-3 shadow w-75 p-3 mb-3 bg-body rounded">
+    <h2 class="">Противоположные числа</h2>
+    <p style="margin: 10px; font-size: 20px;">
+        Квадратичная функция
+Функция  y=ax^2 и её график
+        </p>
+    <p style="margin: 10px; font-size: 20px;">
+В 7-м классе мы изучали функции  y=m,  y=kx,  y=kx+m, y=x^2.  В общем виде функция  y=f(x) является математической моделью зависимости значений функции (зависимой переменной y) от заданных значений аргумента (независимой переменной x).
+ </p>
+    <p style="margin: 10px; font-size: 20px;">
+Действительно, функция y=〖ax〗^2в одном случае нам немного знакома. Смотри: при a=1, получаем y=x^2; эту функцию мы изучили в 7-м классе, и ты, скорее всего, помнишь, что график этой функции — парабола.
+
+
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Посмотрим, что получится при иных значениях коэффициента a.
+Проведём анализ двух функций: y=4x^2 и  y=〖0.25x〗^2. Составим таблицу значений для первой функции y=4x^2:
+ </p>
+    <p style="margin: 10px; font-size: 20px;">
+x	−1,5	−1	−0,5	0	0,5	1	1,5
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        y	9	4	1	0	1	4	9
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Нанесём точки (0;0), (0,5;1), (−0,5;1), (1;4), (−1;4), (1,5;9), (−1,5;9) и соединим их плавной линией.
+
+
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Заполним таблицу значений для функции y=〖0.25x〗^2:
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        x	−4	−2	−1	0	1	2	4
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        y	4	1	0,25	0	0,25	1	4
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Нанесём точки (0;0), (1;0,25), (−1;0,25), (2;1), (−2;1), (4;4), (−4;4) и соединим их плавной линией.
+
+
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Сравни полученные рисунки. Заметно, что оба графика похожи. График такого вида называют параболой.
+У каждой параболы есть вершина и ось симметрии (говорят ось параболы). У данных парабол это точка (0;0) и ось y.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Обрати внимание!
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Коэффициент a определяет, как быстро изменяется значение функции при изменении аргумента. Чем больше коэффициент a, тем более круто направлены вверх ветви параболы.
+Возьмём отрицательный коэффициент a=−1 и построим график функции y=〖-x〗^2. Заполним таблицу:
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        x	−3	−2	−1	0	1	2	3
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        y	−9	−4	−1	0	−1	−4	−9
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Отметим точки (0;0), (1;−1), (−1;−1), (2;−4), (−2;−4), (3;−9), (−3;−9) и соединим плавной линией.
+
+
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Эта парабола имеет вершину в точке (0;0), ось симметрии — ось y. Коэффициент a<0, поэтому ветви идут вниз.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        График функции y=〖ax〗^2— парабола с вершиной в точке (0;0), с симметричными относительно оси ординат ветвями, идущими вверх (если a>0) или вниз (если a<0).
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Графики функций, имеющие противоположные значения коэффициента a, симметричны друг другу относительно оси абсцисс. Например, графики функций y=x^2 и y=〖-x〗^2.
+
+
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Точно так же симметричны друг другу относительно оси x параболы y=〖4x〗^2и  y=〖-x〗^2.
+        </p>
+    <p style="margin: 10px; font-size: 20px;">
+        Обрати внимание!
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        График функции  y=−f(x) симметричен графику функции  y=f(x) относительно оси абсцисс.
+
+    </p>
+</div>
+</body>
+
+
+{% endblock %}

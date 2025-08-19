@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ru">
+
+{% extends 'base.html' %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+
+{% block body %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <!-- <script src="{{ url_for('static', filename='js/ajax_date.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='loader.css') }}">
+
+    <style>
+    @font-face {
+	font-family: Avenir;
+	src: url( "{{ url_for('static', filename='AvenirNextCyr-Regular.ttf') }}" );
+    }
+
+    .font-base{
+    font-family: Avenir !important;
+    }
+
+
+
+
+    </style>
+</head>
+
+<body>
+<div style="text-align: center; margin-top: 100px;">
+    <h1 class="">Парабола и гипербола</h1>
+</div>
+<div class="books_profile border border-2 rounded-3 shadow w-75 p-3 mb-3 bg-body rounded">
+    <h2 class="">Функция y = k/x</h2>
+    <p style="margin: 10px; font-size: 20px;">
+Мы познакомимся с новой функцией — функцией  y=k/x.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Коэффициент k может принимать любые значения, кроме k=0. Рассмотрим сначала случай, когда k=1; таким образом, сначала речь пойдёт о функции y=1/x.
+Чтобы построить график функции y=1/x, присвоим переменной x несколько конкретных значений и вычислим, пользуясь формулой  y=1/x, значения переменной y, которые будут им соответствовать. Рационально вычислять значения функции и выполнять построение графика сначала для положительных значений аргумента, а затем для отрицательных.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Шаг 1.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Если  x=1, то y=1;
+если x=2, то y=1/2;
+если x=4, то y=1/4;
+если x=8, то y=1/8;
+если x=1/2, то y=2;
+если x=1/4, то y=4;
+если x=1/8, то y=8.
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Занесём полученные значения координат в таблицу:
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        x	1	2	4	8	1/2	1/4	1/8
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        y	1	1/2	1/4	1/8	2	4	8
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Построим график функции по этим точкам.
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Шаг 2.
+Если  x=−1, то y=−1;
+если x=−2, то y=−1/2;
+если x=−4, то y=−1/4;
+если x=−8, то y=−1/8;
+если x=−1/2, то y=−2;
+если x=−1/4, то y=−4;
+если x=−1/8, то y=−8.
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Короче говоря, мы составили следующую таблицу:
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        x	−1	−2	−4	−8	−1/2	−1/4	−1/8
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        y	−1	−1/2	−1/4	−1/8	−2	−4	−8
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Построим найденные точки на координатной плоскости xOy.
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Объединив оба чертежа в одном, получим следующий график.
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Получили график функции y=1/x — гиперболу.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Проанализируем график и опишем геометрические свойства гиперболы.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        1) Гипербола симметрична. Всякая прямая, которая проходит через начало координат O и расположена в I и III четвертях, имеет с гиперболой две точки пересечения, лежащие на данной прямой с разных сторон относительно точки O, однако на одинаковых от неё расстояниях. Например, точки: (1;1) и (−1;−1), (2;1/2) и (−2;−1/2) и т. д.
+Значит, O является центром симметрии гиперболы. Другими словами, гипербола симметрична относительно начала координат.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        2) Ветви гиперболы — это симметричные части относительно начала координат, из которых состоит график.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        3) Асимптоты — это прямые, к которым приближаются ветви гиперболы. В данном случае это координатные оси.
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Значит, график функции y=1/x, т. е. гипербола, имеет  2 асимптоты: ось x и ось y.
+При более внимательном анализе можно заметить дополнительное «более тонкое свойство» (как говорят математики).
+        </p>
+    <p style="margin: 10px; font-size: 20px;">
+        Обрати внимание!
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Гипербола имеет оси симметрии.
+Проведём прямую y=x.
+
+
+
+</p>
+    <p style="margin: 10px; font-size: 20px;">
+        Легко заметить: точки (2;  1/2) и (1/2;2) находятся с разных сторон от прямой  y=x, но на одинаковых расстояниях от неё. Данные точки симметричны относительно прямой y=x. Это же утверждение справедливо для точек (4;  1/4) и (1/4;4), (8;  1/8) и (1/8;8) и т. д.  Значит, прямая y=x — ось симметрии гиперболы y=1/x (равно как и y=−x).
+    </p>
+    <p style="margin: 10px; font-size: 20px;">
+            </p>
+</div>
+</body>
+
+
+{% endblock %}

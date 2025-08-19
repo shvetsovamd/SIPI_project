@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ru">
+
+{% extends 'base_profile.html' %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+
+{% block body %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <!-- <script src="{{ url_for('static', filename='js/ajax_date.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='loader.css') }}">
+
+    <style>
+    @font-face {
+	font-family: Avenir;
+	src: url( "{{ url_for('static', filename='AvenirNextCyr-Regular.ttf') }}" );
+    }
+
+    .font-base{
+    font-family: Avenir !important;
+    }
+
+    table {
+    font-family: Avenir;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #000000;
+        margin: 0 auto;
+    }
+
+    </style>
+</head>
+<script>
+    var users_tests;
+
+
+    window.onload = () => {
+        users_tests = {{user_tests_list | tojson | safe}};
+        users_tests = JSON.parse(users_tests);
+        console.log(users_tests);
+        loadTableData(users_tests);
+    }
+
+    function loadTableData(personData) {
+        const tableBody = document.getElementById('tableData');
+        let dataHtml = '';
+
+        for(let test of users_tests) {
+            dataHtml += `<tr><td>${test.DT}</td><td>${test.name}</td><td>${test.value}</td></tr>`;
+        }
+
+        tableBody.innerHTML = dataHtml;
+    }
+</script>
+
+<body>
+<div style="text-align: center; margin-top: 100px;">
+    <h1 style="color: black;">Профиль</h1>
+    <div class="container">
+        <div class="photo_profile_div border border-2 rounded-3 shadow p-3 mb-5 bg-body rounded">
+            {% if current_user.get_photo() == None %}
+            <img class="photo_profile" src="{{ url_for('static', filename='profile.png') }}">
+            {% else %}
+            <img class="photo_profile" src="data:{{current_user.mimetype}};base64,{{current_user.get_photo()}} ">
+            {% endif %}
+            <form enctype="multipart/form-data" method="POST">
+                <div class="w-auto mx-auto p-2" style="display: flex;">
+                    <input class="form-control" name="photo" type="file" multiple accept="image/*,image/jpeg">
+                    <button type="submit" class="btn btn-primary">Загрузить</button>
+                </div>
+            </form>
+            <h4>{{current_user.name | safe}}</h4>
+            <br>
+            <h5>Почта: {{current_user.email | safe}}</h5>
+            {% if current_user.get_role() == 'Admin' %}
+            <h5>Админ</h5>
+            {% else %}
+            {% endif %}
+            {% if current_user.verified %}
+            <h5>Почта подтверждена</h5>
+            {% else %}
+            <h5>Почта не подтверждена</h5>
+            {% endif %}
+            <a href="/forget_password"><h5>Поменять пароль</h5></a>
+        </div>
+        {% if current_user.get_role() == 'Admin' %}
+        {% else %}
+        <div class="progress_profile border border-2 rounded-3 shadow p-3 mb-5 bg-body rounded">
+            <a style="color:black;" href="/tests/all"><h2>Тесты</h2></a>
+            <p>Общий прогресс по тестам за 5 класс</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="750" aria-valuemin="0"
+                     aria-valuemax="100"></div>
+            </div>
+            <br>
+            <p>Общий прогресс по тестам за 6 класс</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                     aria-valuemax="100"></div>
+            </div>
+            <br>
+            <p>Общий прогресс по тестам за 7 класс</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                     aria-valuemax="100"></div>
+            </div>
+            <br>
+            <p>Общий прогресс по тестам за 8 класс</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                     aria-valuemax="100"></div>
+            </div>
+            <br>
+            <p>Общий прогресс по тестам за 9 класс</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                     aria-valuemax="100"></div>
+            </div>
+            <br>
+        </div>
+        <div class="progress_profile border border-2 rounded-3 shadow p-3 mb-5 bg-body rounded">
+            <p>Таблица результатов по тестам</p>
+            <table>
+        <thead>
+        <tr>
+            <th>Время</th>
+            <th>Название теста</th>
+            <th>Результат</th>
+        </tr>
+        </thead>
+        <tbody id="tableData"></tbody>
+    </table>
+
+
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+
+
+{% endblock %}
